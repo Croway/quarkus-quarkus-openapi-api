@@ -64,7 +64,6 @@ spec:
       - fetch-source
     taskRef:
       name: curl
-      kind: ClusterTask
     workspaces:
     - name: source
       workspace: shared-data
