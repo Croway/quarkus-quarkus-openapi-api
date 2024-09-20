@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "quarkus-openapi"
+  title: "quarkus-openapi"
+  description: "Quarkus test openapi"
+  annotations:
+    backstage.io/spectral-ruleset-url: https://raw.githubusercontent.com/croway/spectral-rules/main/ruleset.yaml
+spec:
+  type: openapi
+  system: system:default/quarkus
+  owner: "group:default/backstage-admins"
+  lifecycle: experimental
+  definition:
+    $openapi: https://github.com/croway/quarkus-quarkus-openapi-api/blob/main/specification.yaml
