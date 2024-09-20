@@ -59,3 +59,25 @@ spec:
     workspaces:
     - name: data
       workspace: shared-data
+  - name: register-apicurio
+    runAfter:
+      - fetch-source
+    taskRef:
+      name: curl
+      kind: ClusterTask
+    workspaces:
+    - name: source
+      workspace: shared-data
+    params:
+    - name: url
+      value: http://apicurioregistry-sql.apicurio-registry.router-default.apps.cluster-kl9ng.kl9ng.sandbox2997.opentlc.com/apis/registry/v2/groups/com.redhat/artifacts
+    - name: options
+      value:
+      - "-H 'Accept: application/json, text/plain, */*'"
+      - "-H 'Accept-Language: en-US,en;q=0.9'"
+      - "-H 'Connection: keep-alive'"
+      - "-H 'Content-Type: application/x-yaml'"
+      - "-H 'X-Registry-ArtifactId: quarkus-quarkus-openapi'"
+      - "-H 'X-Registry-ArtifactType: OPENAPI'"
+      - "-d @$(params.api-path)"
+      - "--insecure"
